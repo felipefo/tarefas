@@ -5,9 +5,41 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script  src="./js/visao/menu.js"></script>
-    </head>
-    <body>
-        <nav id="menu">   
-        </nav>
-    </body>
-</html>
+        <style>
+            table, td, th {
+                border: 1px solid black;
+            }
+            table {
+                border-collapse: collapse;
+                width:90%;
+                td {
+                    height: 50px;
+                    vertical-align: bottom;
+                }
+            </style>
+        </head>
+        <body>
+            <nav id="menu">   
+            </nav>
+            <div style="margin:10px;">
+            <table>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Status</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                <tr>
+                    <td>Pagar contas</td>
+                    <td>casa</td>
+                    <td>a Fazer</td>
+                    <td>10/10/2023</td>
+                    <td><input type="button" value="Editar"/> <input type="button" value="Remover"/></td>
+                </tr>
+                
+            </table>
+                 <input type="button" value="Adicioniar Tarefa" style="float: right;"/>
+           
+            </div>
+        </body>
+    </html>
