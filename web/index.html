@@ -6,6 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script  src="./js/visao/menu.js"></script>
         <style>
+
+            @media (max-width: 420px)
+            {
+                .hide_420px
+                {
+                    display: none;
+                }
+            }
             table, td, th {
                 border: 1px solid black;
             }
@@ -22,24 +30,24 @@
             <nav id="menu">   
             </nav>
             <div style="margin:10px;">
-            <table>
-                <tr>
-                    <th>Descrição</th>
-                    <th>Categoria</th>
-                    <th>Status</th>
-                    <th>Data</th>
-                    <th>Ações</th>
-                <tr>
-                    <td>Pagar contas</td>
-                    <td>casa</td>
-                    <td>a Fazer</td>
-                    <td>10/10/2023</td>
-                    <td><input type="button" value="Editar"/> <input type="button" value="Remover"/></td>
-                </tr>
-                
-            </table>
-                 <input type="button" value="Adicioniar Tarefa" style="float: right;"/>
-           
+                <table>
+                    <tr>
+                        <th>Descrição</th>
+                        <th class='hide_420px' >Categoria</th>
+                        <th>Status</th>
+                        <th>Data</th>
+                        <th>Ações</th>
+                    <tr>
+                        <td>Pagar contas</td>
+                        <td class='hide_420px'>casa</td>
+                        <td>a Fazer</td>
+                        <td>10/10/2023</td>
+                        <td><input type="button" value="Editar"/> <input type="button" value="Remover"/></td>
+                    </tr>
+
+                </table>
+                <input type="button" value="Adicioniar Tarefa" style="float: right;"/>
+
             </div>
         </body>
     </html>
