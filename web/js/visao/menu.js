@@ -11,5 +11,7 @@ document.addEventListener("DOMContentLoaded", adicionaMenu);
 
 
 
-
+function teste(){
+    
+}
 
