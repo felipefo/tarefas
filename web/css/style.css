@@ -18,6 +18,25 @@ table {
     }
 }
 
+.menuConteudo{
+    
+    width:100%;background-color: #1F266B;position: fixed;top: 0;padding: 14px 16px;height:30px;
+    
+}
+
+.menuCadastro{ 
+        font-size:30px;
+        padding-right:4px;
+        color:white;
+        cursor:pointer;
+        display: block;
+        position:fixed;
+        background-color:black;
+        width:100%;
+    } 
+
+
+
 @media only screen and (max-width: 360px) {
     nav {           		 
         height: 100%;

@@ -7,7 +7,6 @@
         <script  src="./js/visao/menu.js"></script>
         <link rel="stylesheet" href="./css/style.css"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     </head>
     <body>
 
@@ -21,8 +20,8 @@
         </script>
         <nav id="menu"></nav>
         <div class="menuButton" >
-            <div style="width:100%;background-color: #1F266B;position: fixed;top: 0; padding: 14px 16px;">
-                <div style="display:inline" onclick="openNav()">&#9776 </div>
+            <div  class="menuConteudo">
+                <div style="display:inline" onclick="openNav()"><i class="material-icons">menu</i></div>
             </div>
         </div>
        <div style="margin:10px;margin-top:70px;">
@@ -41,8 +40,8 @@
                     <td><input type="button" value="Editar"/> <input type="button" value="Remover"/></td>
                 </tr>
 
-            </table>
-            <input type="button" value="Adicioniar Tarefa" style="float: right;"/>
+            </table><br>
+            <input type="button" onclick="window.location.href='adicionartarefa.html'" value="Adicionar Tarefa" style="float: right;"/>
 
         </div>
     </body>
