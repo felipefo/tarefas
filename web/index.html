@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script  src="./js/visao/menu.js"></script>
+        <script  src="./js/visao/index.js"></script>
+        
         <link rel="stylesheet" href="./css/style.css"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
@@ -17,6 +19,17 @@
             function closeNav() {
                 document.getElementById("menu").style.width = "0";
             }
+
+            const xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function () {
+                const listaTarefas = JSON.parse(this.responseText);
+               // console.log(listaTarefas);
+                carregaListaTarefas(listaTarefas);
+            }
+            xmlhttp.open("GET", "/api/tarefas.php");
+            xmlhttp.send();
+
+
         </script>
         <nav id="menu"></nav>
         <div class="menuButton" >
@@ -24,24 +37,17 @@
                 <div style="display:inline" onclick="openNav()"><i class="material-icons">menu</i></div>
             </div>
         </div>
-       <div style="margin:10px;margin-top:70px;">
-            <table>
+        <div id="teste" style="margin:10px;margin-top:70px;">
+            <table id="lista_de_tarefas">
                 <tr>
                     <th>Descrição</th>
                     <th class='hide_420px' >Categoria</th>
                     <th>Status</th>
                     <th>Data</th>
                     <th>Ações</th>
-                <tr>
-                    <td>Pagar contas</td>
-                    <td class='hide_420px'>casa</td>
-                    <td>a Fazer</td>
-                    <td>10/10/2023</td>
-                    <td><input type="button" value="Editar"/> <input type="button" value="Remover"/></td>
-                </tr>
-
-            </table><br>
-            <input type="button" onclick="window.location.href='adicionartarefa.html'" value="Adicionar Tarefa" style="float: right;"/>
+            </table>
+            <br>
+            <input type="button" onclick="window.location.href = 'adicionartarefa.html'" value="Adicionar Tarefa" style="float: right;"/>
 
         </div>
     </body>
