@@ -6,10 +6,9 @@ COPY apache.conf /etc/apache2/apache2.conf
 
 RUN sudo apt-get update \
     && sudo apt-get install -y \
-        ... \
     && sudo rm -rf /var/lib/apt/lists/*
     && \
-    sudo docker-php-ext-install pdo pdo_mysql \
+    sudo docker-php-ext-install pdo pdo_mysql 
    
      
 RUN sudo docker-php-ext-configure gd --with-jpeg=/usr/include/ &&\
