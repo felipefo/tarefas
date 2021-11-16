@@ -14,12 +14,13 @@ class TarefaMapper {
         $this->pdo = new PDO("mysql:host=localhost;dbname=listatarefas", $this->dbuser, $this->dbpass);
     }
     public function salvar(Tarefa $tarefa) {
-        $sql = "INSERT INTO tarefas (descricao, data_criacao, status) VALUES ('"
+        $sql = "INSERT INTO tarefas (descricao, data_criacao, categoria, status) VALUES ('"
                 . $tarefa->get_descricao()
                 . "','" . $tarefa->get_dataCriacao()
+                . "','" . $tarefa->get_categoria()
                 . "','" . $tarefa->get_status() . "')";
         if ($this->pd->query($sql) == TRUE) {
-            echo "Craido com sucesso";
+            echo "Criado com sucesso";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
             throw new Exception("Erro ao criar tarefa" . $conn->error);
