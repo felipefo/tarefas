@@ -57,6 +57,7 @@ class Router implements IRouter {
     public function post() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->class->post();
+             http_response_code(201);
             return true;
         }
         return false;
