@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/api/model/Validacoes.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/model/Validacoes.php";
 
 /**
  * @author felipe
@@ -10,13 +10,25 @@ class Tarefa {
     protected $dataCriacao;
     protected $status;
     protected $categoria;
+    protected $dataFim;
+    
+    const AFAZER = 1;
+    const FAZENDO = 2;
+    const FEITO = 3;
+    
+    
+    
    
     public function get_descricao() {
         return $this->descricao;
     }
 
-    public function get_dataCriacao() {
+    public function get_data_criacao() {
         return $this->dataCriacao;
+    }
+    
+     public function get_data_fim() {
+        return $this->dataFim;
     }
 
     public function get_status() {
@@ -33,8 +45,13 @@ class Tarefa {
         return $this;
     }
 
-    public function set_dataCriacao($dataCriacao) {
+    public function set_data_criacao($dataCriacao) {
         $this->dataCriacao = $dataCriacao;
+        return $this;
+    }
+    
+     public function set_data_fim($dataFim) {
+        $this->dataFim = $dataFim;
         return $this;
     }
 
