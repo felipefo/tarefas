@@ -48,6 +48,7 @@ class Router implements IRouter {
     //https://restfulapi.net/http-methods/#delete
     public function delete() {
         if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+            // echo ($_REQUEST['id']);
             $this->class->delete();
             return true;
         }

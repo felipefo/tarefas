@@ -5,12 +5,30 @@ function ControleTarefa() {
     this.get = function () {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onload = function () {
+
             var listaTarefas = JSON.parse(this.responseText);
             carregaListaTarefas(listaTarefas);
+
         };
         xmlhttp.open("GET", "/www/api/tarefas.php");
         xmlhttp.send();
     };
+
+    this.delete = function (id) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onload = function () {
+            if (xmlhttp.status === 200)
+            {
+                controleTarefa.get();
+                alert("Tarefa removida com sucesso");
+            } else {
+                alert("Erro ao remover a Tarefa");
+            }
+        };
+        xmlhttp.open("DELETE", "/www/api/tarefas.php?id=" + id);
+        xmlhttp.send();
+    };
+
     this.post = function (event) {
         event.preventDefault();//previne que o browser faça a submissao, premitindo que seja feita com javascript.
         var formElement = document.getElementById("adicionartarefa");
@@ -23,9 +41,9 @@ function ControleTarefa() {
                 {
                     controleTarefa.get();
                     alert("Tarefa criada com sucesso");
-                    document.getElementById("adicionar").style='none';
+                    document.getElementById("adicionar").style = 'none';
                 } else {
-                    alert("Erro ao criar a terafa");
+                    alert("Erro ao criar a tarefa");
                 }
             }
             //var listaTarefas = JSON.parse(this.responseText);

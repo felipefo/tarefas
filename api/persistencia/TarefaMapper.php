@@ -32,4 +32,12 @@ class TarefaMapper {
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         return  $results;
     }
+    
+    public function remover($id) {
+        $sql = "DELETE FROM tarefa WHERE id=" . $id;
+        $statement = $this->pdo->prepare($sql );
+        if($statement->execute()== false){
+            throw new Exception("Não foi possivel remover a tarefa");
+        }
+    }
 }

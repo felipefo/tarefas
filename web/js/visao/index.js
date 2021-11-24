@@ -4,7 +4,7 @@ function carregaListaTarefas(tarefas) {
     var tabelaTarefas = document.getElementById("lista_de_tarefas");
     var corpo = tabelaTarefas.getElementsByTagName('tbody')[0];
     console.log("tabelaTarefas:" + tabelaTarefas.rows.length);
-    var  length  = corpo.rows.length;
+    var length = corpo.rows.length;
     for (var index = 1; index < length; index++) {
         corpo.deleteRow(1);
     }
@@ -18,7 +18,7 @@ function carregaListaTarefas(tarefas) {
                 + '<td>' + tarefas[tarefa]['status'] + '</td>'
                 + '<td>' + tarefas[tarefa]['data_criacao'] + '</td>'
                 + '<td><input type="button" value="Editar"/>'
-                + '<input type="button" value="Remover"/></td>'
+                + '<input type="button" value="Remover" onClick="controleTarefa.delete(' + tarefas[tarefa]['id'] + ')"/></td>'
                 + '</tr>';
     }
 

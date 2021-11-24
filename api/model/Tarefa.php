@@ -6,6 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/model/Validacoes.php";
  */
 class Tarefa {
    
+    protected $id;
     protected $descricao;
     protected $dataCriacao;
     protected $status;
@@ -16,8 +17,9 @@ class Tarefa {
     const FAZENDO = 2;
     const FEITO = 3;
     
-    
-    
+     public function get_id() {
+        return $this->id;
+    }
    
     public function get_descricao() {
         return $this->descricao;
