@@ -15,7 +15,7 @@ class Tarefas implements IRouter {
        }
         else {
             http_response_code(400);
-            throw new Exception("Faltando o identificador da tarafa");
+            throw new Exception("Faltando o identificador da tarefa");
        }
     }
 
@@ -41,8 +41,19 @@ class Tarefas implements IRouter {
     }
 
     public function put() {
-        http_response_code(404);
-        throw new Exception("Não implementado ainda");
+        $tarefa = new Tarefa();
+        if (isset($_POST['descricao'])) {
+            $tarefa->set_descricao($_POST['descricao']);
+        }if (isset($_POST['datafim'])) {
+            $tarefa->set_data_fim($_POST['datafim']);
+        }if (isset($_POST['status'])) {
+            $tarefa->set_status($_POST['status']);
+        }if (isset($_REQUEST['id'])) {
+            $tarefa->set_id($_REQUEST['id']);
+        }          
+        $tarefaMapper = new TarefaMapper();
+        $resposta = $tarefaMapper->atualizar($tarefa);
+        echo $resposta;
     }
 
 }

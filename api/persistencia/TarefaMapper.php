@@ -25,6 +25,20 @@ class TarefaMapper {
             throw new Exception("Erro ao criar tarefa" . $error);
         }
     }
+    
+     public function atualizar(Tarefa $tarefa) {
+        $sql = "UPDATE tarefa SET descricao='". $tarefa->get_descricao() ."'"
+                . " WHERE id=" . $tarefa->get_id(). ";";
+        //echo $sql;
+        if($error = $this->pdo->query($sql) == TRUE) {
+            echo "Atualizado com sucesso";
+        } else {
+            echo "Error: " . $sql . "<br>" . $error;
+            throw new Exception("Erro ao atualizar tarefa" . $error);
+        }
+    }
+    
+    
     public function buscar() {
         $sql = "select * from tarefa";
         $statement = $this->pdo->prepare($sql );

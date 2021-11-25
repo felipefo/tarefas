@@ -17,8 +17,12 @@ class Tarefa {
     const FAZENDO = 2;
     const FEITO = 3;
     
-     public function get_id() {
+    public function get_id() {
         return $this->id;
+    }
+    
+    public function set_id($id) {
+        return $this->id = $id;
     }
    
     public function get_descricao() {

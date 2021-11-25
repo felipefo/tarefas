@@ -11,25 +11,25 @@ class Router implements IRouter {
 
     function __construct($class) {
         $this->class = $class;
-          
     }
-    
-     public function get() {
+
+    public function get() {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-           // var_dump($this->class);
+            // var_dump($this->class);
             $this->class->get();
             return true;
         }
         return false;
     }
+
     public function run() {
 
         try {
             if ($this->get()) {
                 return;
             } else if ($this->post()) {
-               return;
-           } else if ($this->delete()) {
+                return;
+            } else if ($this->delete()) {
                 return;
             } else if ($this->put()) {
                 return;
@@ -43,12 +43,9 @@ class Router implements IRouter {
         }
     }
 
-   
-
     //https://restfulapi.net/http-methods/#delete
     public function delete() {
         if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-            // echo ($_REQUEST['id']);
             $this->class->delete();
             return true;
         }
@@ -57,16 +54,22 @@ class Router implements IRouter {
 
     public function post() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->class->post();
-             http_response_code(201);
-            return true;
+            if (isset($_POST['method']) && $_POST['method'] === 'PUT') {
+                $this->class->put();
+                http_response_code(200);
+            } else {
+                $this->class->post();
+                http_response_code(201);
+                return true;
+            }
         }
         return false;
     }
 
     public function put() {
         if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-            $this->class->put();
+            http_response_code(400);
+            throw new Exception("Nao suportado. Usar o post com o hidden field" . $error);
             return true;
         }
         return false;

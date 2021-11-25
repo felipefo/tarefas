@@ -52,4 +52,28 @@ function ControleTarefa() {
         xmlhttp.open("POST", "/www/api/tarefas.php");
         xmlhttp.send(tarefaForm);
     };
+    
+    this.put = function (event) {
+        event.preventDefault();//previne que o browser faça a submissao, premitindo que seja feita com javascript.
+        var formElement = document.getElementById("atualizartarefa");
+        //https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+        var tarefaForm = new FormData(formElement);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onload = function () {
+            if (xmlhttp.readyState === xmlhttp.DONE) {
+                if (xmlhttp.status === 200)
+                {
+                    controleTarefa.get();
+                    alert("Tarefa atualizada com sucesso");
+                    document.getElementById("atualizar").style = 'none';
+                } else {
+                    alert("Erro ao atualizar a tarefa");
+                }
+            }
+            //var listaTarefas = JSON.parse(this.responseText);
+            //carregaListaTarefas(listaTarefas);
+        };
+        xmlhttp.open("POST", "/www/api/tarefas.php?id=" + formElement['atualizarid'].value);
+        xmlhttp.send(tarefaForm);
+    };
 }

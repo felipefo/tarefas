@@ -17,10 +17,20 @@ function carregaListaTarefas(tarefas) {
                 + '<td class="hide_420px">' + tarefas[tarefa]['categoria'] + '</td>'
                 + '<td>' + tarefas[tarefa]['status'] + '</td>'
                 + '<td>' + tarefas[tarefa]['data_criacao'] + '</td>'
-                + '<td><input type="button" value="Editar"/>'
+                + '<td><input type="button" value="Editar" \n\
+                onClick=\'exibeAtualizarTarefa(' + tarefas[tarefa]['id'] + ',"' + tarefas[tarefa]['descricao'] + '")\'/>'
                 + '<input type="button" value="Remover" onClick="controleTarefa.delete(' + tarefas[tarefa]['id'] + ')"/></td>'
                 + '</tr>';
     }
 
 }
+
+
+    function exibeAtualizarTarefa(id, descricao, categoria) {
+        
+        document.getElementById('atualizar').style.display = 'block';
+        document.getElementById('atualizarid').value = id;
+        document.getElementById('descricao').value = descricao;
+        document.getElementById('categoria').value = categoria;
+    }
 
