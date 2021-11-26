@@ -69,7 +69,7 @@ class Router implements IRouter {
     public function put() {
         if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
             http_response_code(400);
-            throw new Exception("Nao suportado. Usar o post com o hidden field" . $error);
+            throw new Exception("Nao suportado. Usar o post com o hidden field");
             return true;
         }
         return false;
