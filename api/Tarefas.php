@@ -8,22 +8,30 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/rotas/Router.php";
 //padrao de projetos strategy   
 class Tarefas implements IRouter {
 
+    public $role_validacao = [
+        "get" => ['cliente','admin'],
+        "delete" => ['admin'],
+        "post" => ["cliente", 'admin'],
+        "put" => ["cliente", 'admin'],
+    ];
+    
     public function delete() {
         if (isset($_REQUEST['id'])) {
-           $tarefaMapper = new TarefaMapper();
-           $tarefaMapper->remover($_REQUEST['id']);
-       }
-        else {
+            $tarefaMapper = new TarefaMapper();
+            $tarefaMapper->remover($_REQUEST['id']);
+        } else {
             http_response_code(400);
             throw new Exception("Faltando o identificador da tarefa");
-       }
+        }
     }
 
     public function get() {
-
-        $tarefaMapper = new TarefaMapper();
-        $resposta = $tarefaMapper->buscar();
-        echo json_encode($resposta);
+        if(isset($_SESSION["user_id"])){
+            $tarefaMapper = new TarefaMapper();
+            $resposta = $tarefaMapper->buscar($_SESSION["user_id"]);
+            echo json_encode($resposta);
+        }
+        else echo '[]';
     }
 
     public function post() {
@@ -37,6 +45,7 @@ class Tarefas implements IRouter {
         }
         $tarefaMapper = new TarefaMapper();
         $resposta = $tarefaMapper->salvar($tarefa);
+        http_response_code(201);
         echo $resposta;
     }
 
@@ -50,7 +59,7 @@ class Tarefas implements IRouter {
             $tarefa->set_status($_POST['status']);
         }if (isset($_REQUEST['id'])) {
             $tarefa->set_id($_REQUEST['id']);
-        }          
+        }
         $tarefaMapper = new TarefaMapper();
         $resposta = $tarefaMapper->atualizar($tarefa);
         echo $resposta;

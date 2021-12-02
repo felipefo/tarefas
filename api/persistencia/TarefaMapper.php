@@ -39,9 +39,10 @@ class TarefaMapper {
     }
     
     
-    public function buscar() {
-        $sql = "select * from tarefa";
-        $statement = $this->pdo->prepare($sql );
+    public function buscar($user_id) {
+        $sql = "select * from tarefa where tarefa.user_id=". $user_id;//recuperando o id por meio da sessao no servidor.
+       // $sql = "select * from tarefa";//recuperando o id por meio da sessao no servidor.
+        $statement = $this->pdo->prepare($sql);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         return  $results;

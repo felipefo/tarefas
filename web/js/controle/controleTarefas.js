@@ -1,14 +1,18 @@
-var controleTarefa = new ControleTarefa();
+controleTarefa = new ControleTarefa();
 
 function ControleTarefa() {
 
     this.get = function () {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onload = function () {
-
-            var listaTarefas = JSON.parse(this.responseText);
-            carregaListaTarefas(listaTarefas);
-
+            if (xmlhttp.status === 200)
+            {
+                var listaTarefas = JSON.parse(this.responseText);
+                carregaListaTarefas(listaTarefas);
+            } else {
+                alert(this.responseText);
+            }
+           
         };
         xmlhttp.open("GET", "/www/api/tarefas.php");
         xmlhttp.send();
@@ -46,13 +50,11 @@ function ControleTarefa() {
                     alert("Erro ao criar a tarefa");
                 }
             }
-            //var listaTarefas = JSON.parse(this.responseText);
-            //carregaListaTarefas(listaTarefas);
         };
         xmlhttp.open("POST", "/www/api/tarefas.php");
         xmlhttp.send(tarefaForm);
     };
-    
+
     this.put = function (event) {
         event.preventDefault();//previne que o browser faça a submissao, premitindo que seja feita com javascript.
         var formElement = document.getElementById("atualizartarefa");
@@ -70,8 +72,6 @@ function ControleTarefa() {
                     alert("Erro ao atualizar a tarefa");
                 }
             }
-            //var listaTarefas = JSON.parse(this.responseText);
-            //carregaListaTarefas(listaTarefas);
         };
         xmlhttp.open("POST", "/www/api/tarefas.php?id=" + formElement['atualizarid'].value);
         xmlhttp.send(tarefaForm);

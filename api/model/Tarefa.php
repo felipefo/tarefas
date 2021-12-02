@@ -12,6 +12,7 @@ class Tarefa {
     protected $status;
     protected $categoria;
     protected $dataFim;
+    protected $user_id;
     
     const AFAZER = 1;
     const FAZENDO = 2;
@@ -23,6 +24,10 @@ class Tarefa {
     
     public function set_id($id) {
         return $this->id = $id;
+    }
+    
+    public function set_user_id($user_id) {
+        return $this->user_id = $user_id;
     }
    
     public function get_descricao() {

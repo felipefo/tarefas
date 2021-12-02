@@ -7,6 +7,7 @@
         <script  src="./js/visao/menu.js"></script>
         <script  src="./js/visao/index.js"></script>
         <script  src="./js/controle/controleTarefas.js"></script>
+        <script  src="./js/controle/controleUsuarios.js"></script>
 
         <link rel="stylesheet" href="./css/style.css"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -25,6 +26,7 @@
             document.addEventListener("DOMContentLoaded", function() {
                 console.log("DOM completamente carregado e analisado");
                 var controleTarefa = new ControleTarefa();
+                var controleUsuario = new ControleUsuarios();
                 controleTarefa.get();
                 var form = document.getElementById("adicionartarefa");
                 //esse evento será disparado quando o formulario for submetido
@@ -32,7 +34,12 @@
                 
                 var formAtualizar = document.getElementById("atualizartarefa");
                 //esse evento será disparado quando o formulario for submetido
-                formAtualizar.addEventListener('submit', controleTarefa.put);  
+                formAtualizar.addEventListener('submit', controleTarefa.put); 
+                
+                var formLogin = document.getElementById("login_usuario");
+                //esse evento será disparado quando o formulario for submetido
+                formLogin.addEventListener('submit', controleUsuario.login);  
+                
            });
 
 
@@ -115,6 +122,24 @@
                     </div>
                 </form>
             </div>
+            
+             <div id="login_modal" class="modal"> 
+             <form id="login_usuario" class="modal-content animate" method="post"> 
+                <h3>Login</h3>
+                <div class="container">
+                    <input type="text" placeholder="Usuario" name="login" required>
+                    <input type="password" placeholder="Senha" name="senha" required>        
+                </div>
+                 <br>
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('login_modal').style.display = 'none'" class="cancelbtn">Cancelar</button>
+                    <input type="submit" value="Login" class="confirmbtn"/>
+                </div>
+                 </form>
+            </div>
+            
+
+            
         </div>
     </body>
 </html>

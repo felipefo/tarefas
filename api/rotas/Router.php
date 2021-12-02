@@ -13,9 +13,23 @@ class Router implements IRouter {
         $this->class = $class;
     }
 
+    public function checkPermission($verbo) {
+        if (isset($_SESSION["role"])) {
+            $role = $_SESSION["role"];
+            $roles = $this->class->role_validacao[$verbo];
+            if (!in_array($role, $roles)) {
+                http_response_code(403);
+                throw new Exception("Sem premissao para acessar esse recurso");
+            }
+        } else {
+            http_response_code(403);
+            throw new Exception("Voce não esta logado");
+        }
+    }
+
     public function get() {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            // var_dump($this->class);
+            $this->checkPermission('get');
             $this->class->get();
             return true;
         }
@@ -23,7 +37,8 @@ class Router implements IRouter {
     }
 
     public function run() {
-
+        session_start(); //inicia a criacao da sesao no servidor. 
+        //Esta sessao pertence somente a este servidor.
         try {
             if ($this->get()) {
                 return;
@@ -46,6 +61,7 @@ class Router implements IRouter {
     //https://restfulapi.net/http-methods/#delete
     public function delete() {
         if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+            $this->checkPermission('delete');
             $this->class->delete();
             return true;
         }
@@ -55,11 +71,11 @@ class Router implements IRouter {
     public function post() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['method']) && $_POST['method'] === 'PUT') {
+                $this->checkPermission('post');
                 $this->class->put();
                 http_response_code(200);
             } else {
                 $this->class->post();
-                http_response_code(201);
                 return true;
             }
         }
@@ -68,6 +84,7 @@ class Router implements IRouter {
 
     public function put() {
         if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+            $this->checkPermission('put');
             http_response_code(400);
             throw new Exception("Nao suportado. Usar o post com o hidden field");
             return true;
