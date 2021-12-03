@@ -14,10 +14,11 @@ class TarefaMapper {
         $this->pdo = new PDO("mysql:host=localhost;dbname=tarefas", $this->dbuser, $this->dbpass);
     }
     public function salvar(Tarefa $tarefa) {
-        $sql = "INSERT INTO tarefa (descricao, data_fim, status) VALUES ('"
+        $sql = "INSERT INTO tarefa (descricao, data_fim, status, user_id) VALUES ('"
                 . $tarefa->get_descricao()
                 . "','" . date("Y-m-d", strtotime($tarefa->get_data_fim())) . "'"
-                . ",1);";
+                . ",1"
+                . "," . $_SESSION['user_id']. ");";
         if ($error = $this->pdo->query($sql) == TRUE) {
             echo "Criado com sucesso";
         } else {
@@ -27,7 +28,7 @@ class TarefaMapper {
     }
     
      public function atualizar(Tarefa $tarefa) {
-        $sql = "UPDATE tarefa SET descricao='". $tarefa->get_descricao() ."'"
+        $sql = "UPDATE tarefa SET descricao='". $tarefa->get_descricao()  ."'"
                 . " WHERE id=" . $tarefa->get_id(). ";";
         //echo $sql;
         if($error = $this->pdo->query($sql) == TRUE) {

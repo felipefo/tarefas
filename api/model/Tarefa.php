@@ -51,7 +51,7 @@ class Tarefa {
     }
 
     public function set_descricao($descricao) {
-        Validacoes::verificaTamanho("descricao", $descricao, 5, 30);
+       // Validacoes::verificaTamanho("descricao", $descricao, 5, 200);
         $this->descricao = $descricao;
         return $this;
     }
