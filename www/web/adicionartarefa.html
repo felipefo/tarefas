@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lista de Tarefas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/style.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    </head>
+    <body>
+        
+		
+        <nav id="menu"></nav>
+        <div class="menuCadastro" >
+            <div class="menuConteudo">
+                <i onClick="window.history.back();" class="material-icons">arrow_back</i>
+                <span style="font-size: 25px;"> Adicionar tarefa </span>
+            </div>
+        </div>
+        <div style="margin:10px;margin-top:70px;">
+            <form name="adicionartarefa" action="/api/Tarefas.php" method="post">
+                Descrição: <textarea name="descricao" rows="5" cols="33" placeholder="Descreva a tarefa" required></textarea><br><br>
+                Data de finalização: <input type="date" name="datafim"><br><br>
+                Categoria: <select name="categoria" id="categoria">
+                    <option value="Casa">Casa</option>
+                    <option value="Estudo">Trabalho</option>
+                    <option value="Família">Família</option>
+                    <option value="Trabalho" selected>Estudo</option>
+                </select>
+                <br><br>
+                Status: 
+                <select name="status" id="status">
+                    <option value="Arquivado">Arquivado</option>
+                    <option value="Em andamento">Em andamento</option>
+                    <option value="Fechado">Fechado</option>
+                    <option value="Aberto" selected>Aberto</option>
+                </select>
+                <br><br>
+                <input type="submit" value="Salvar tarefa"/>
+            </form>
+        </div>
+    </body>
+</html>
