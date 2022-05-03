@@ -1,9 +1,9 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/api/model/Tarefa.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/api/persistencia/TarefaMapper.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/api/rotas/IRouter.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/api/rotas/Router.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/model/Tarefa.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/persistencia/TarefaMapper.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/rotas/IRouter.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/rotas/Router.php";
 
 //padrao de projetos strategy   
 class Tarefas implements IRouter {

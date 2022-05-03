@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/api/model/Tarefa.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/model/Tarefa.php";
 /**
  * Description of TarefaMapper
  * @author felipe

@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/api/model/Validacoes.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/model/Validacoes.php";
 
 /**
  * @author felipe

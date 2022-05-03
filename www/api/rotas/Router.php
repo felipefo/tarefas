@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/api/rotas/IRouter.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/rotas/IRouter.php";
 
 /**
  * @author felipe
@@ -9,7 +9,7 @@ class Router implements IRouter {
 
     public $class; //aberta a extensão e fechada a modificação        
 
-    public function Router($class) {
+    function __construct($class) {
         $this->class = $class;
     }
 
