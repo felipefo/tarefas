@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/rotas/IRouter.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/api/rotas/IRouter.php";
 
 /**
  * @author felipe
