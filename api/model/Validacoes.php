@@ -6,7 +6,7 @@
  */
 class Validacoes {
 
-    public static function verificaTamanho($campo, $texto, int $min, int $max) {
+    public static function verificaTamanho($campo, $texto, $min, $max) {
 
         if (!is_null($texto)) {
             $length = strlen($texto);
