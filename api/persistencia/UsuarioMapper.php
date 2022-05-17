@@ -18,9 +18,9 @@ class UsuarioMapper {
 
     public function autenticacao($usuario) {
         $sql = "select * from usuario where login='" .
-                $usuario->get_login() . "' and senha='"
+                $usuario->get_login() . "' and senha="
                 . $usuario->get_senha() . "'";
-		print($sql);		
+		#print($sql);		
 				
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
