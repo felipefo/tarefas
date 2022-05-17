@@ -12,7 +12,7 @@ function ControleUsuarios() {
             if (xmlhttp.readyState === xmlhttp.DONE) {
                 if (xmlhttp.status === 200)
                 {
-                     controleTarefa.get();
+                    controleTarefa.get();
                     alert("Usuario logado com sucesso");
                     addLogout();
                     document.getElementById("login_modal").style = 'none';
@@ -21,7 +21,7 @@ function ControleUsuarios() {
                 }
             }
         };
-        xmlhttp.open("POST", "/www/api/usuarios.php/login");
+        xmlhttp.open("POST", "/api/usuarios.php");
         xmlhttp.send(tarefaForm);
     };
     
@@ -41,7 +41,7 @@ function ControleUsuarios() {
                 }
             }
         };
-        xmlhttp.open("POST", "/www/api/usuarios.php/logout");
+        xmlhttp.open("DELETE", "/api/usuarios.php");
         xmlhttp.send();
     };
    

@@ -1,9 +1,9 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/model/Usuario.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/persistencia/UsuarioMapper.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/rotas/IRouter.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/rotas/Router.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/api/model/Usuario.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/api/persistencia/UsuarioMapper.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/api/rotas/IRouter.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/api/rotas/Router.php";
 
 class Usuarios implements IRouter {
 
@@ -42,8 +42,8 @@ class Usuarios implements IRouter {
         
     public function delete() {
 
-        http_response_code(501);
-        throw new Exception("Nao implementado ainda");
+        $this->logout();
+		http_response_code(200);
     }
 
     public function get() {
@@ -56,7 +56,7 @@ class Usuarios implements IRouter {
     }
 
     public function post() {
-        if (str_ends_with($_SERVER['REQUEST_URI'], "login")) {
+        
             $usuario = new Usuario();
             if (isset($_POST['login'])) {
                 $usuario->set_login($_POST['login']);
@@ -65,9 +65,7 @@ class Usuarios implements IRouter {
             }
             $this->login($usuario);
             http_response_code(200);
-        } else if (str_ends_with($_SERVER['REQUEST_URI'], "logout")) {
-            $this->logout();
-        }
+        
     }
 
     public function put() {

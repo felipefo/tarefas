@@ -1,61 +1,42 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Tempo de geração: 16-Nov-2021 às 18:26
--- Versão do servidor: 10.4.19-MariaDB
--- versão do PHP: 8.0.7
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Banco de dados: `tarefas`
---
-
+-- --------------------------------------------------------
+-- Servidor:                     localhost
+-- Versão do servidor:           5.1.72-community - MySQL Community Server (GPL)
+-- OS do Servidor:               Win32
+-- HeidiSQL Versão:              9.4.0.5125
 -- --------------------------------------------------------
 
---
--- Estrutura da tabela `tarefa`
---
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-CREATE TABLE `tarefa` (
-  `id` int(11) NOT NULL,
+
+-- Copiando estrutura do banco de dados para tarefas
+CREATE DATABASE IF NOT EXISTS `tarefas` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `tarefas`;
+
+-- Copiando estrutura para tabela tarefas.tarefa
+CREATE TABLE IF NOT EXISTS `tarefa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descricao` text NOT NULL,
+  `user_id` int(11) NOT NULL,
   `status` int(11) DEFAULT NULL,
-  `data_criacao` date NOT NULL DEFAULT current_timestamp(),
-  `data_fim` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `data_criacao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `data_fim` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Índices para tabelas despejadas
---
+-- Exportação de dados foi desmarcado.
+-- Copiando estrutura para tabela tarefas.usuario
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role` varchar(50) DEFAULT '0',
+  `login` varchar(50) NOT NULL DEFAULT '0',
+  `senha` varchar(50) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
---
--- Índices para tabela `tarefa`
---
-ALTER TABLE `tarefa`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de tabelas despejadas
---
-
---
--- AUTO_INCREMENT de tabela `tarefa`
---
-ALTER TABLE `tarefa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
+-- Exportação de dados foi desmarcado.
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

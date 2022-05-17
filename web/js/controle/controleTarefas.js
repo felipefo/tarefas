@@ -14,7 +14,7 @@ function ControleTarefa() {
             }
            
         };
-        xmlhttp.open("GET", "/www/api/tarefas.php");
+        xmlhttp.open("GET", "/api/tarefas.php");
         xmlhttp.send();
     };
 
@@ -29,7 +29,7 @@ function ControleTarefa() {
                 alert("Erro ao remover a Tarefa");
             }
         };
-        xmlhttp.open("DELETE", "/www/api/tarefas.php?id=" + id);
+        xmlhttp.open("DELETE", "/api/tarefas.php?id=" + id);
         xmlhttp.send();
     };
 
@@ -51,7 +51,7 @@ function ControleTarefa() {
                 }
             }
         };
-        xmlhttp.open("POST", "/www/api/tarefas.php");
+        xmlhttp.open("POST", "/api/tarefas.php");
         xmlhttp.send(tarefaForm);
     };
 
@@ -73,7 +73,7 @@ function ControleTarefa() {
                 }
             }
         };
-        xmlhttp.open("POST", "/www/api/tarefas.php?id=" + formElement['atualizarid'].value);
+        xmlhttp.open("POST", "/api/tarefas.php?id=" + formElement['atualizarid'].value);
         xmlhttp.send(tarefaForm);
     };
 }

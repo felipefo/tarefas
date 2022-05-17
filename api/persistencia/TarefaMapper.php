@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/model/Tarefa.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/api/model/Tarefa.php";
 /**
  * Description of TarefaMapper
  * @author felipe
@@ -19,6 +19,7 @@ class TarefaMapper {
                 . "','" . date("Y-m-d", strtotime($tarefa->get_data_fim())) . "'"
                 . ",1"
                 . "," . $_SESSION['user_id']. ");";
+		print($sql);
         if ($error = $this->pdo->query($sql) == TRUE) {
             echo "Criado com sucesso";
         } else {

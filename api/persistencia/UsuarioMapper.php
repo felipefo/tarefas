@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/www/api/model/Usuario.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/api/model/Usuario.php";
 
 /**
  * Description of TarefaMapper
@@ -20,6 +20,8 @@ class UsuarioMapper {
         $sql = "select * from usuario where login='" .
                 $usuario->get_login() . "' and senha='"
                 . $usuario->get_senha() . "'";
+		print($sql);		
+				
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
