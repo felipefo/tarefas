@@ -17,12 +17,11 @@ class UsuarioMapper {
     }
 
     public function autenticacao($usuario) {
-        $sql = "select * from usuario where login='" .
-                $usuario->get_login() . "' and senha="
-                . $usuario->get_senha() . "'";
-		#print($sql);		
-				
+        
+		$sql = "select * from usuario where login= ? and ?";
         $statement = $this->pdo->prepare($sql);
+		$statement->bindValue(1, $usuario->get_login());
+		$statement->bindValue(2, $usuario->get_senha());
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         if(count($results)>0){
