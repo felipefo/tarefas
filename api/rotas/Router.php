@@ -29,7 +29,7 @@ class Router implements IRouter {
 
     public function get() {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            #$this->checkPermission('get');
+            $this->checkPermission('get');
             $this->class->get();
             return true;
         }
@@ -61,7 +61,7 @@ class Router implements IRouter {
     //https://restfulapi.net/http-methods/#delete
     public function delete() {
         if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-            #$this->checkPermission('delete');
+            $this->checkPermission('delete');
             $this->class->delete();
             return true;
         }
@@ -71,7 +71,7 @@ class Router implements IRouter {
     public function post() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['method']) && $_POST['method'] === 'PUT') {
-                #$this->checkPermission('post');
+                $this->checkPermission('post');
                 $this->class->put();
                 http_response_code(200);
             } else {
@@ -85,7 +85,7 @@ class Router implements IRouter {
 
     public function put() {
         if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-            #$this->checkPermission('put');
+            $this->checkPermission('put');
             http_response_code(400);
             throw new Exception("Nao suportado. Usar o post com o hidden field");
             return true;
